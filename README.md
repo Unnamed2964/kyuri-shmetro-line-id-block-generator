@@ -2,7 +2,7 @@
 
 一个在浏览器中运行的工具，用于生成上海地铁风格的线路号方块 SVG 图形。
 
-**🔗 在线使用：** https://Unnamed2964.github.io/shmetro-line-id-block-generator/
+**🔗 在线使用：** https://unnamed2964.github.io/kyuri-shmetro-line-id-block-generator/
 
 ## 免责声明
 
