@@ -4,6 +4,10 @@
 
 **🔗 在线使用：** https://unnamed2964.github.io/kyuri-shmetro-line-id-block-generator/
 
+## 效果预览
+
+![各条线路效果示例](example.png)
+
 ## 免责声明
 
 本工具的设计参数（定位、字号等）均来自对 `reference/` 目录中实拍照片的**粗略视觉逆向工程**，属于个人估算，**不代表上海申通地铁集团有限公司的任何企业视觉标准或官方规范**。
