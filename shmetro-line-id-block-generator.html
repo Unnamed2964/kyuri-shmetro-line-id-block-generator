@@ -378,7 +378,7 @@
         // 地铁线路颜色配置
         const LINE_COLORS = {
             '1': '#E3002B',
-            '2': '#82BF25', 
+            '2': '#8CC220', 
             '3': '#FCD600',
             '4': '#461D84',
             '5': '#944D9A',
@@ -464,28 +464,28 @@
             const getLineTemplate = (lineNum, lineNumber) => {
                 const templates = {
                     single_1: {
-                        rect: { x: "0", y: "0", width: "83.933", height: "100" },
-                        text: { x: "8.00493", y: "87.16537", fontSize: "102.95" }
+                        rect: { x: "0", y: "0", width: "86", height: "100" },
+                        text: { x: "7.5", y: "88.8", fontSize: "104" }
                     },
                     single_4: {
-                        rect: { x: "0", y: "0", width: "83.933", height: "100" },
-                        text: { x: "14.26403", y: "87.22018", fontSize: "102.95" }
+                        rect: { x: "0", y: "0", width: "86", height: "100" },
+                        text: { x: "14.9", y: "88.8", fontSize: "104" }
                     },
                     double_11: {
-                        rect: { x: "0", y: "0", width: "103.17", height: "100" },
-                        text: { x: "3.48033", y: "87.45085", fontSize: "102.95", letterSpacing: "-9.16" }
+                        rect: { x: "0", y: "0", width: "105", height: "100" },
+                        text: { x: "3.6", y: "88.6", fontSize: "104", letterSpacing: "-10.2" }
                     },
                     double_1x: {
-                        rect: { x: "0", y: "0", width: "103.17", height: "100" },
-                        text: { x: "-2.7604", y: "87.4729", fontSize: "102.95", letterSpacing: "-10.54" }
+                        rect: { x: "0", y: "0", width: "105", height: "100" },
+                        text: { x: "-3.3", y: "88.6", fontSize: "104", letterSpacing: "-14" }
                     },
                     double_21: {
-                        rect: { x: "0", y: "0", width: "103.17", height: "100" },
-                        text: { x: "8.3875", y: "87.47015", fontSize: "102.95", letterSpacing: "-10.54" }
+                        rect: { x: "0", y: "0", width: "105", height: "100" },
+                        text: { x: "7.4", y: "88.6", fontSize: "104", letterSpacing: "-9.5" }
                     },
                     double_2x: {
-                        rect: { x: "0", y: "0", width: "103.17", height: "100" },
-                        text: { x: "2.31833", y: "83.81679", fontSize: "95.623", letterSpacing: "-5.05" }
+                        rect: { x: "0", y: "0", width: "105", height: "100" },
+                        text: { x: "0.7", y: "86.8", fontSize: "102", letterSpacing: "-5.2", transform: "scale(.98 1)" }
                     }
                 };
                 if (lineNumber === '1') return templates.single_1;
@@ -511,11 +511,12 @@
                 const { width, height } = template.rect;
                 const textDef = template.text;
                 const letterSpacingAttr = textDef.letterSpacing ? ` letter-spacing="${textDef.letterSpacing}px"` : '';
+                const transformAttr = textDef.transform ? ` transform="${textDef.transform}"` : '';
                 const svgContent = `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
  <g>
   <rect x="${template.rect.x}" y="${template.rect.y}" width="${template.rect.width}" height="${template.rect.height}" fill="${color}"/>
-  <text x="${textDef.x}" y="${textDef.y}" fill="${textColor}" font-family="Arial" font-size="${textDef.fontSize}px"${letterSpacingAttr}>${lineNumber}</text>
+  <text x="${textDef.x}" y="${textDef.y}" fill="${textColor}" font-family="Arial" font-size="${textDef.fontSize}px"${letterSpacingAttr}${transformAttr}>${lineNumber}</text>
  </g>
 </svg>`;
                 return svgContent;
@@ -535,11 +536,12 @@
                 const pathOptions = textDef.letterSpacing ? { letterSpacing: parseFloat(textDef.letterSpacing) } : {};
                 const path = font.getPath(lineNumber, parseFloat(textDef.x), parseFloat(textDef.y), parseFloat(textDef.fontSize), pathOptions);
                 const pathData = path.toPathData(4);
+                const pathTransformAttr = textDef.transform ? ` transform="${textDef.transform}"` : '';
                 const svgContent = `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
  <g>
   <rect x="${template.rect.x}" y="${template.rect.y}" width="${template.rect.width}" height="${template.rect.height}" fill="${color}"/>
-  <path d="${pathData}" fill="${fillColor}"/>
+  <path d="${pathData}" fill="${fillColor}"${pathTransformAttr}/>
  </g>
 </svg>`;
                 return svgContent;
