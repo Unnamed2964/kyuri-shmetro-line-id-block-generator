@@ -1,6 +1,6 @@
 # 上海地铁线路号方块生成器
 
-一个在浏览器中运行的工具，用于生成上海地铁风格的线路号方块 SVG 图形。
+一个在浏览器中运行的工具，用于生成上海地铁风格（暂时为通长风格）的线路号方块 SVG 图形。
 
 **🔗 在线使用：** https://unnamed2964.github.io/kyuri-shmetro-line-id-block-generator/
 
@@ -36,5 +36,6 @@
 ## 作者
 
 Made by [Umamichi](https://github.com/Unnamed2964)
+
 
 
