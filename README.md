@@ -25,6 +25,10 @@
 
 直接在浏览器中打开 `shmetro-line-id-block-generator.html` 即可，无需任何构建或安装步骤。
 
+## 许可证
+
+[MIT License](LICENSE)
+
 ## 作者
 
 Made by [Umamichi](https://github.com/Unnamed2964)
