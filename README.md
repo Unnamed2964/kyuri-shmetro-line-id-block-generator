@@ -2,7 +2,7 @@
 
 *[中文文档](README.zh-CN.md)*
 
-A tool to generate Shanghai Metro-style (currently full-length style) line number block SVG graphics. It provides both an intuitive Web interface (online webpage) and an **npm module** that can be used as a dependency in Node.js and browser environments.
+A tool to generate Shanghai Metro-style (currently over-the-door route map style) line number block SVG graphics. It provides both an intuitive Web interface (online webpage) and an **npm module** that can be used as a dependency in Node.js and browser environments.
 
 **🔗 Web Online Version:** https://unnamed2964.github.io/kyuri-shmetro-line-id-block-generator/
 
@@ -82,6 +82,7 @@ Just open `shmetro-line-id-block-generator.html` of the project in your browser 
 ## Author
 
 Made by [Umamichi](https://github.com/Unnamed2964)
+
 
 
 
