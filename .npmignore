@@ -1,0 +1,12 @@
+# 开发环境配置
+shmetro-line-id-block-generator.html
+test-script.js
+tsconfig.json
+
+# 说明与图片文件
+example.png
+reference/
+.github/
+
+# 其他（可有可无，保持整洁）
+.gitignore

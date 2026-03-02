@@ -33,7 +33,7 @@
 ### 安装
 
 ```bash
-npm install kyuri-shmetro-line-id-block-generator
+npm install @kyuri-metro/shmetro-line-id-block-generator
 ```
 
 ### 代码示例 (Node.js/TypeScript 环境)
@@ -41,7 +41,7 @@ npm install kyuri-shmetro-line-id-block-generator
 支持输出完整带有 `viewBox` 画布的独立 SVG 文档，也支持通过关闭 `wrapper`，仅生成内部图形组合 (`<g>...</g>`) 供其它大图表嵌入。
 
 ```typescript
-import { generateSVG } from 'kyuri-shmetro-line-id-block-generator';
+import { generateSVG } from '@kyuri-metro/shmetro-line-id-block-generator';
 
 // 1. 生成完整的独立 SVG 字符串图像（比如 2 号线）
 const svgString = generateSVG(2);
@@ -61,7 +61,7 @@ console.log(embeddableGroup);
 通过 CDN 或者本地打包的 `dist/bundle.js` 文件，本库将其注册为全局变量 `window.ShmetroGenerator` 以便在纯 HTML 页面引用使用：
 
 ```html
-<script src="https://unpkg.com/kyuri-shmetro-line-id-block-generator/dist/bundle.js"></script>
+<script src="https://unpkg.com/@kyuri-metro/shmetro-line-id-block-generator/dist/bundle.js"></script>
 <script>
     // 原生调用
     const svgCode = window.ShmetroGenerator.generateSVG(10);
