@@ -1,0 +1,31 @@
+{
+  "name": "kyuri-shmetro-line-id-block-generator",
+  "version": "1.0.0",
+  "description": "一个在浏览器中运行的工具，用于生成上海地铁风格的线路号方块 SVG 图形。",
+  "main": "dist/index.js",
+  "devDependencies": {
+    "@types/node": "^25.3.3",
+    "esbuild": "^0.27.3",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "build:web": "esbuild src/index.ts --bundle --outfile=dist/bundle.js --format=iife --global-name=ShmetroGenerator",
+    "postbuild": "npm run build:web"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Unnamed2964/kyuri-shmetro-line-id-block-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Unnamed2964/kyuri-shmetro-line-id-block-generator/issues"
+  },
+  "homepage": "https://github.com/Unnamed2964/kyuri-shmetro-line-id-block-generator#readme",
+  "types": "dist/index.d.ts"
+}

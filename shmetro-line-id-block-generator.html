@@ -8,6 +8,7 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://unpkg.com/opentype.js@latest/dist/opentype.min.js"></script>
+    <script src="./dist/bundle.js"></script>
     <style>
         * {
             margin: 0;
@@ -374,33 +375,7 @@
 
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
-
-        // 地铁线路颜色配置
-        const LINE_COLORS = {
-            '1': '#E3002B',
-            '2': '#8CC220', 
-            '3': '#FCD600',
-            '4': '#461D84',
-            '5': '#944D9A',
-            '6': '#D40068',
-            '7': '#ED6F00',
-            '8': '#0094D8',
-            '9': '#87CAED',
-            '10': '#C6AFD4',
-            '11': '#871C2B',
-            '12': '#007B61',
-            '13': '#E999C0',
-            '14': '#626020',
-            '15': '#BCA886',
-            '16': '#98D1C0',
-            '17': '#BC796F',
-            '18': '#C4984F',
-            '19': '#F5AB78',
-            '20': '#009F65',
-            '21': '#F7AF00',
-            '22': '#5F376F',
-            '23': '#B0D478'
-        };
+        const { generateSVG, generateSVGWithPaths, WHITE_TEXT_LINES } = window.ShmetroGenerator || {};
 
         function App() {
             const [hasArialFont, setHasArialFont] = useState(false);
@@ -460,96 +435,27 @@
                 }
             };
 
-            // 获取模板和通用参数
-            const getLineTemplate = (lineNum, lineNumber) => {
-                const templates = {
-                    single_1: {
-                        rect: { x: "0", y: "0", width: "86", height: "100" },
-                        text: { x: "7.5", y: "88.8", fontSize: "104" }
-                    },
-                    single_4: {
-                        rect: { x: "0", y: "0", width: "86", height: "100" },
-                        text: { x: "14.9", y: "88.8", fontSize: "104" }
-                    },
-                    double_11: {
-                        rect: { x: "0", y: "0", width: "105", height: "100" },
-                        text: { x: "3.6", y: "88.6", fontSize: "104", letterSpacing: "-10.2" }
-                    },
-                    double_1x: {
-                        rect: { x: "0", y: "0", width: "105", height: "100" },
-                        text: { x: "-3.3", y: "88.6", fontSize: "104", letterSpacing: "-14" }
-                    },
-                    double_21: {
-                        rect: { x: "0", y: "0", width: "105", height: "100" },
-                        text: { x: "7.4", y: "88.6", fontSize: "104", letterSpacing: "-9.5" }
-                    },
-                    double_2x: {
-                        rect: { x: "0", y: "0", width: "105", height: "100" },
-                        text: { x: "0.7", y: "86.8", fontSize: "102", letterSpacing: "-5.2", transform: "scale(.98 1)" }
-                    }
-                };
-                if (lineNumber === '1') return templates.single_1;
-                if (lineNum >= 2 && lineNum <= 9) return templates.single_4;
-                if (lineNumber === '11') return templates.double_11;
-                if (lineNum >= 10 && lineNum <= 19) return templates.double_1x;
-                if (lineNumber === '21') return templates.double_21;
-                if (lineNum >= 20 && lineNum <= 29) return templates.double_2x;
-                return templates.double_1x;
-            };
-
             // 生成SVG内容（文字版，用于预览和标准下载）
-            const generateSVG = () => {
+            const renderSVG = () => {
                 if (!lineNumber) return '';
-                const lineNum = parseInt(lineNumber);
-                if (isNaN(lineNum) || lineNum <= 0 || lineNum >= 30) {
-                    return '';
+                if (window.ShmetroGenerator) {
+                    return window.ShmetroGenerator.generateSVG(lineNumber);
                 }
-                const color = LINE_COLORS[lineNumber] || '#666666';
-                const whiteTextLines = ['1', '4', '5', '6', '8', '11', '12', '14', '17', '20', '22'];
-                const textColor = whiteTextLines.includes(lineNumber) ? '#ffffff' : '#000000';
-                const template = getLineTemplate(lineNum, lineNumber);
-                const { width, height } = template.rect;
-                const textDef = template.text;
-                const letterSpacingAttr = textDef.letterSpacing ? ` letter-spacing="${textDef.letterSpacing}px"` : '';
-                const transformAttr = textDef.transform ? ` transform="${textDef.transform}"` : '';
-                const svgContent = `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
- <g>
-  <rect x="${template.rect.x}" y="${template.rect.y}" width="${template.rect.width}" height="${template.rect.height}" fill="${color}"/>
-  <text x="${textDef.x}" y="${textDef.y}" fill="${textColor}" font-family="Arial" font-size="${textDef.fontSize}px"${letterSpacingAttr}${transformAttr}>${lineNumber}</text>
- </g>
-</svg>`;
-                return svgContent;
+                return '';
             };
 
             // 生成字形路径SVG（使用opentype.js将文字转为路径，消除字体依赖）
-            const generateSVGWithPaths = (font) => {
+            const renderSVGWithPaths = (font) => {
                 if (!lineNumber || !font) return '';
-                const lineNum = parseInt(lineNumber);
-                if (isNaN(lineNum) || lineNum <= 0 || lineNum >= 30) return '';
-                const color = LINE_COLORS[lineNumber] || '#666666';
-                const whiteTextLines = ['1', '4', '5', '6', '8', '11', '12', '14', '17', '20', '22'];
-                const fillColor = whiteTextLines.includes(lineNumber) ? '#ffffff' : '#000000';
-                const template = getLineTemplate(lineNum, lineNumber);
-                const { width, height } = template.rect;
-                const textDef = template.text;
-                const pathOptions = textDef.letterSpacing ? { letterSpacing: parseFloat(textDef.letterSpacing) } : {};
-                const path = font.getPath(lineNumber, parseFloat(textDef.x), parseFloat(textDef.y), parseFloat(textDef.fontSize), pathOptions);
-                const pathData = path.toPathData(4);
-                const pathTransformAttr = textDef.transform ? ` transform="${textDef.transform}"` : '';
-                const svgContent = `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
- <g>
-  <rect x="${template.rect.x}" y="${template.rect.y}" width="${template.rect.width}" height="${template.rect.height}" fill="${color}"/>
-  <path d="${pathData}" fill="${fillColor}"${pathTransformAttr}/>
- </g>
-</svg>`;
-                return svgContent;
+                if (window.ShmetroGenerator) {
+                    return window.ShmetroGenerator.generateSVGWithPaths({ lineNumber, font });
+                }
+                return '';
             };
 
             // 下载标准SVG文件（含text元素，依赖Arial字体）
             const downloadSVG = () => {
-                const svgContent = generateSVG();
+                const svgContent = renderSVG();
                 const blob = new Blob([svgContent], { type: 'image/svg+xml' });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
@@ -564,7 +470,7 @@
             // 下载字形路径SVG（使用opentype.js转换，不依赖字体）
             const handleVectorizedDownload = () => {
                 if (!otFont || !lineNumber) return;
-                const svgContent = generateSVGWithPaths(otFont);
+                const svgContent = renderSVGWithPaths(otFont);
                 const blob = new Blob([svgContent], { type: 'image/svg+xml' });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
@@ -666,7 +572,7 @@
                                         {lineNumber ? (
                                             <div 
                                                 className="preview-svg"
-                                                dangerouslySetInnerHTML={{ __html: generateSVG() }}
+                                                dangerouslySetInnerHTML={{ __html: renderSVG() }} 
                                             />
                                         ) : (
                                             <div className="empty-preview">
