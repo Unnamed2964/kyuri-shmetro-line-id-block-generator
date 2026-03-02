@@ -1,54 +1,56 @@
-# 上海地铁线路号方块生成器
+# Shanghai Metro Line ID Block Generator
 
-一个用于生成上海地铁风格（暂时为通长风格）的线路号方块 SVG 图形的工具。它既提供了一个直观的 Web 界面（在线网页），也提供了一个可以在 Node.js 和浏览器中作为依赖使用的 **npm 模块**。
+*[中文文档](README.zh-CN.md)*
 
-**🔗 在线 Web 版本：** https://unnamed2964.github.io/kyuri-shmetro-line-id-block-generator/
+A tool to generate Shanghai Metro-style (currently full-length style) line number block SVG graphics. It provides both an intuitive Web interface (online webpage) and an **npm module** that can be used as a dependency in Node.js and browser environments.
 
-## 效果预览
+**🔗 Web Online Version:** https://unnamed2964.github.io/kyuri-shmetro-line-id-block-generator/
 
-![各条线路效果示例](example.png)
+## Preview
 
-## 免责声明
+![Various Line Previews](example.png)
 
-本工具的设计参数（定位、字号等）均来自对 `reference/` 目录中实拍照片的**粗略视觉逆向工程**，属于个人估算，**不代表上海申通地铁集团有限公司的任何企业视觉标准或官方规范**。
+## Disclaimer
 
-输出结果仅供个人学习、参考及非商业用途，请勿将其用于任何官方或商业场合。
+The design parameters (positioning, font size, etc.) of this tool are based on a **rough visual reverse-engineering** of real-life photos in the `reference/` directory. They are personal estimations and **do not represent any official corporate visual standards or official specifications of the Shanghai Shentong Metro Group Co., Ltd.**
 
-## 参考素材
+The output results are solely for personal study, reference, and non-commercial purposes. Please do not use them for any official or commercial occasions.
 
-`reference/` 目录中存放了逆向工程所参照的实拍图片，仅作为设计参数推导依据。
+## References 
 
-## 功能
+The `reference/` directory contains real-life photos used as references for reverse engineering, serving only as the basis for deriving design parameters.
 
-- 支持在网页中输入线路号码，实时预览线路号方块效果
-- 开箱即用支持 1-23 号线自带的标准颜色和黑白文字色
-- 导出标准 SVG（含 `<text>` 元素）
-- 导出字形路径版 SVG（通过 opentype.js 将文字转为矢量路径，无系统字体依赖限制）
-- 作为 NPM 包，支持在任意 Node.js/TypeScript 项目以及 Web 项目中引用生成纯字符串 SVG，或是用于无缝嵌入已有 SVG 中。
+## Features
 
-## 作为 NPM 包使用
+- Support inputting line numbers in the webpage to preview the line number block effect in real-time.
+- Out-of-the-box support for the standard colors of Shanghai Metro lines 1-23, with matching standard black or white text colors.
+- Export standard SVGs (including the `<text>` element).
+- Export vector path SVGs (converts text to vector paths via `opentype.js`, eliminating system font dependency limits).
+- Published as an NPM package, allowing you to generate pure SVG strings or embed into existing SVGs within any Node.js/TypeScript or Web project.
 
-你可以将核心生成逻辑作为独立的依赖安装到你的前端或后端项目中。
+## Using as an NPM Package
 
-### 安装
+You can install the core generation logic as an independent dependency in your frontend or backend projects.
+
+### Installation
 
 ```bash
 npm install @kyuri-metro/shmetro-line-id-block-generator
 ```
 
-### 代码示例 (Node.js/TypeScript 环境)
+### Code Example (Node.js/TypeScript Environment)
 
-支持输出完整带有 `viewBox` 画布的独立 SVG 文档，也支持通过关闭 `wrapper`，仅生成内部图形组合 (`<g>...</g>`) 供其它大图表嵌入。
+It supports outputting a complete independent SVG document with a `viewBox` canvas. It also supports skipping the wrapper container by passing `wrapper: false`, which generates only the internal graphic `<g>...</g>` to embed inside other large SVGs.
 
 ```typescript
 import { generateSVG } from '@kyuri-metro/shmetro-line-id-block-generator';
 
-// 1. 生成完整的独立 SVG 字符串图像（比如 2 号线）
+// 1. Generate a complete standalone SVG string image (e.g. Line 2)
 const svgString = generateSVG(2);
-// 或者配置传入
+// Or configuration passing
 const svgString2 = generateSVG({ lineNumber: '9' });
 
-// 2. 对于拼接 SVG 图形：仅获取用于内嵌的 '<g>...</g>' 内容，不带顶层包装
+// 2. For stitching SVG graphics: only get the '<g>...</g>' content for embedding, without the top-level wrapper
 const embeddableGroup = generateSVG({ 
     lineNumber: '11', 
     wrapper: false 
@@ -56,28 +58,28 @@ const embeddableGroup = generateSVG({
 console.log(embeddableGroup);
 ```
 
-### 在浏览器环境直接引用 (UMD 支持)
+### Direct Import in Browser Environments (UMD Support)
 
-通过 CDN 或者本地打包的 `dist/bundle.js` 文件，本库将其注册为全局变量 `window.ShmetroGenerator` 以便在纯 HTML 页面引用使用：
+Via a CDN or your locally bundled `dist/bundle.js` file, this library registers a global variable `window.ShmetroGenerator` to be used directly in pure HTML pages:
 
 ```html
 <script src="https://unpkg.com/@kyuri-metro/shmetro-line-id-block-generator/dist/bundle.js"></script>
 <script>
-    // 原生调用
+    // Native calling
     const svgCode = window.ShmetroGenerator.generateSVG(10);
     document.getElementById("container").innerHTML = svgCode;
 </script>
 ```
 
-## 本地网页运行
+## Running the Webpage Locally
 
-直接在浏览器中打开项目的 `shmetro-line-id-block-generator.html` （运行前需确认已通过 `npm run build` 构建了核心分发产物）。
+Just open `shmetro-line-id-block-generator.html` of the project in your browser (Ensure you have built the core distributions with `npm run build` beforehand).
 
-## 许可证
+## License
 
 [MIT License](LICENSE)
 
-## 作者
+## Author
 
 Made by [Umamichi](https://github.com/Unnamed2964)
 
