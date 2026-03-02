@@ -1,5 +1,7 @@
 # Shanghai Metro Line ID Block Generator
 
+[![npm version](https://img.shields.io/npm/v/@kyuri-metro/shmetro-line-id-block-generator.svg)](https://www.npmjs.com/package/@kyuri-metro/shmetro-line-id-block-generator) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 *[中文文档](README.zh-CN.md)*
 
 A tool to generate Shanghai Metro-style (currently over-the-door route map style) line number block SVG graphics. It provides both an intuitive Web interface (online webpage) and an **npm module** that can be used as a dependency in Node.js and browser environments.

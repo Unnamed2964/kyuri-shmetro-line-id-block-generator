@@ -1,5 +1,7 @@
 # 上海地铁线路号方块生成器
 
+[![npm version](https://img.shields.io/npm/v/@kyuri-metro/shmetro-line-id-block-generator.svg)](https://www.npmjs.com/package/@kyuri-metro/shmetro-line-id-block-generator) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 一个用于生成上海地铁风格（暂时为通长风格）的线路号方块 SVG 图形的工具。它既提供了一个直观的 Web 界面（在线网页），也提供了一个可以在 Node.js 和浏览器中作为依赖使用的 **npm 模块**。
 
 **🔗 在线 Web 版本：** https://unnamed2964.github.io/kyuri-shmetro-line-id-block-generator/
