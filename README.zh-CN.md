@@ -18,12 +18,13 @@
 
 | 真实标识 | 生成效果 |
 | ------------------------------------------------------------ | ---------------------------------------- |
-| <img src="./assets/IMG_20260225_185600_rect_04.png" alt="IMG_20260225_185600_rect_04" width="86" /> | ![line-1](./assets/line-1.svg)           |
+| <img src="./assets/IMG_20260225_185600_rect_04.png" alt="IMG_20260225_185600_rect_04" width="86" /> | ![line-1](./assets/line-1.svg)   |
 | <img src="./assets/IMG_20260225_185108_rect_04.png" alt="IMG_20260225_185108_rect_04" width="87" /> | ![line-2](./assets/line-2.svg)   |
-| <img src="./assets/IMG_20260225_184947_rect_18.png" alt="IMG_20260225_184947_rect_18" width="105" /> | ![line-11](./assets/line-11.svg)         |
+| <img src="./assets/IMG_20260225_184947_rect_18.png" alt="IMG_20260225_184947_rect_18" width="105" /> | ![line-11](./assets/line-11.svg) |
+| <img src="./assets/IMG_20260225_185119_rect_00.png" alt="IMG_20260225_185119_rect_00" width="105" /> | ![line-13](./assets/line-13.svg) |
 | <img src="./assets/IMG_20260225_185539_rect_00.png" alt="IMG_20260225_185539_rect_00" width="104" /> | ![line-19](./assets/line-19.svg) |
-| <img src="./assets/IMG_20260225_185522_rect_00.png" alt="IMG_20260225_185522_rect_00" width="105" /> | ![line-21](./assets/line-21.svg)         |
-| <img src="./assets/IMG_20260225_184916_rect_01.png" alt="IMG_20260225_184916_rect_01" width="105" /> | ![line-22](./assets/line-22.svg)         |
+| <img src="./assets/IMG_20260225_185522_rect_00.png" alt="IMG_20260225_185522_rect_00" width="105" /> | ![line-21](./assets/line-21.svg) |
+| <img src="./assets/IMG_20260225_184916_rect_01.png" alt="IMG_20260225_184916_rect_01" width="105" /> | ![line-22](./assets/line-22.svg) |
 
 ## 免责声明
 
