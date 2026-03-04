@@ -2,13 +2,28 @@
 
 [![npm version](https://img.shields.io/npm/v/@kyuri-metro/shmetro-line-id-block-generator.svg)](https://www.npmjs.com/package/@kyuri-metro/shmetro-line-id-block-generator) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
+*[English Documentation](README.md)*
+
 一个用于生成上海地铁风格（暂时为通长风格）的线路号方块 SVG 图形的工具。它既提供了一个直观的 Web 界面（在线网页），也提供了一个可以在 Node.js 和浏览器中作为依赖使用的 **npm 模块**。
 
 **🔗 在线 Web 版本：** https://unnamed2964.github.io/kyuri-shmetro-line-id-block-generator/
 
 ## 效果预览
 
+本库生成的所有线路编号方块（1-23 号线）效果如下。
+
 ![各条线路效果示例](example.png)
+
+## 与真实标识对比验证
+
+| 真实标识 | 生成效果 |
+| ------------------------------------------------------------ | ---------------------------------------- |
+| <img src="./assets/IMG_20260225_185600_rect_04.png" alt="IMG_20260225_185600_rect_04" style="zoom:23%;" /> | ![line-1](./assets/line-1.svg)           |
+| <img src="./assets/IMG_20260225_185108_rect_04.png" alt="IMG_20260225_185108_rect_04" style="zoom:30%;" /> | ![line-2 (1)](./assets/line-2%20(1).svg)   |
+| <img src="./assets/IMG_20260225_184947_rect_18.png" alt="IMG_20260225_184947_rect_18" style="zoom: 37%;" /> | ![line-11](./assets/line-11.svg)         |
+| <img src="./assets/IMG_20260225_185539_rect_00.png" alt="IMG_20260225_185539_rect_00" style="zoom: 32%;" /> | ![line-19 (1)](./assets/line-19%20(1).svg) |
+| <img src="./assets/IMG_20260225_185522_rect_00.png" alt="IMG_20260225_185522_rect_00" style="zoom: 30%;" /> | ![line-21](./assets/line-21.svg)         |
+| <img src="./assets/IMG_20260225_184916_rect_01.png" alt="IMG_20260225_184916_rect_01" style="zoom:48%;" /> | ![line-22](./assets/line-22.svg)         |
 
 ## 免责声明
 
