@@ -22,6 +22,23 @@ The output results are solely for personal study, reference, and non-commercial 
 
 The `reference/` directory contains real-life photos used as references for reverse engineering, serving only as the basis for deriving design parameters.
 
+## Reverse Engineering Notes
+
+The layout parameters of the line number blocks were derived through visual reverse engineering based on real-world photos.
+
+Photos were captured as front-facing as possible (using a selfie stick) to reduce perspective distortion. The block proportions were assumed to match the line number blocks appearing in the official Shanghai Metro route map SVG published on the Shanghai Metro website.
+
+Based on this assumption, text positioning and scaling were visually fitted to match real signage.
+
+General fitting rules observed:
+
+- Most line numbers share the same `<text>` coordinates and spacing parameters.
+- Narrow-number cases require special adjustments:
+  - `1`, `11`, `21` require modified positioning due to their visual width.
+- Two-digit lines starting with `2` (`2x`) require horizontal compression to match the appearance of real signage.
+
+Reference photos used for fitting are stored in the `reference/` directory.
+
 ## Features
 
 - Support inputting line numbers in the webpage to preview the line number block effect in real-time.
