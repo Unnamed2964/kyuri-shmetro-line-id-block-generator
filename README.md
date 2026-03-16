@@ -8,7 +8,7 @@ A tool to generate Shanghai Metro-style (currently over-the-door route map style
 
 **🔗 Web Online Version:** https://unnamed2964.github.io/kyuri-shmetro-line-id-block-generator/
 
-**This project's 2024 interchange line-ID block implementation has been merged into the Shanghai Metro 2024 style draft of the RMG project**: ![#787 adjust 2024 IntBox sizing and text positioning for >=20 line numbers](https://github.com/railmapgen/rmg/pull/779)
+**This project's 2024 interchange line-ID block implementation has been merged into the Shanghai Metro 2024 style draft of the RMG project**: [#787 adjust 2024 IntBox sizing and text positioning for >=20 line numbers](https://github.com/railmapgen/rmg/pull/779)
 
 ## Preview
 
