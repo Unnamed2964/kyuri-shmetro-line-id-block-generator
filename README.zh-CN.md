@@ -8,6 +8,8 @@
 
 **🔗 在线 Web 版本：** https://unnamed2964.github.io/kyuri-shmetro-line-id-block-generator/
 
+**本项目的2024版换乘线路号色块实现已被合并进入RMG项目的上海地铁2024风格草案**：[#787 adjust 2024 IntBox sizing and text positioning for >=20 line numbers](https://github.com/railmapgen/rmg/pull/779)
+
 ## 效果预览
 
 本库生成的所有线路编号方块（1-23 号线）效果如下。
