@@ -6,7 +6,7 @@
 
 A tool to generate Shanghai Metro-style (currently over-the-door route map style) line number block SVG graphics. It provides both an intuitive Web interface (online webpage) and an **npm module** that can be used as a dependency in Node.js and browser environments.
 
-**🔗 Web Online Version:** https://unnamed2964.github.io/kyuri-shmetro-line-id-block-generator/
+**🔗 Web Online Version:** https://shmetro-idblock.umamichi.moe/
 
 **This project's 2024 interchange line-ID block implementation has been merged into the Shanghai Metro 2024 style draft of the RMG project**: [#787 adjust 2024 IntBox sizing and text positioning for >=20 line numbers](https://github.com/railmapgen/rmg/pull/779)
 
@@ -138,7 +138,16 @@ This command will:
 
 - build the npm package outputs into `dist/`
 - emit declaration files into `dist/`
-- build the webpage into `docs/` for GitHub Pages
+- build the webpage into `docs/` for Cloudflare Pages
+
+### Deploy to Cloudflare Pages
+
+Use these settings in Cloudflare Pages:
+
+- Framework preset: `Vite` or `None`
+- Build command: `npm run build:web`
+- Build output directory: `docs`
+- Root directory: `/`
 
 ### Build Only the Package Outputs
 

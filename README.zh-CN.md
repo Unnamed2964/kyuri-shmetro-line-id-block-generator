@@ -6,7 +6,7 @@
 
 一个用于生成上海地铁风格（暂时为通长风格）的线路号方块 SVG 图形的工具。它既提供了一个直观的 Web 界面（在线网页），也提供了一个可以在 Node.js 和浏览器中作为依赖使用的 **npm 模块**。
 
-**🔗 在线 Web 版本：** https://unnamed2964.github.io/kyuri-shmetro-line-id-block-generator/
+**🔗 在线 Web 版本：** https://shmetro-idblock.umamichi.moe/
 
 **本项目的2024版换乘线路号色块实现已被合并进入RMG项目的上海地铁2024风格草案**：[#787 adjust 2024 IntBox sizing and text positioning for >=20 line numbers](https://github.com/railmapgen/rmg/pull/779)
 
@@ -138,7 +138,16 @@ npm run build
 
 - 构建 npm 包产物到 `dist/`
 - 生成类型声明到 `dist/`
-- 构建网页演示到 `docs/` 以供 GitHub Pages 使用
+- 构建网页演示到 `docs/` 以供 Cloudflare Pages 使用
+
+### 部署到 Cloudflare Pages
+
+Cloudflare Pages 建议使用以下配置：
+
+- Framework preset: `Vite` 或 `None`
+- Build command: `npm run build:web`
+- Build output directory: `docs`
+- Root directory: `/`
 
 ### 仅构建 npm 包产物
 

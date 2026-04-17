@@ -1,8 +1,6 @@
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 
-const repoBase = '/kyuri-shmetro-line-id-block-generator/';
-
 export default defineConfig(({ command, mode }) => {
 	if (mode === 'package') {
 		return {
@@ -28,7 +26,7 @@ export default defineConfig(({ command, mode }) => {
 	}
 
 	return {
-		base: command === 'build' ? repoBase : '/',
+		base: '/',
 		build: {
 			outDir: 'docs',
 			emptyOutDir: true
