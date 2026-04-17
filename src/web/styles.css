@@ -43,6 +43,13 @@ html.dark {
 	box-sizing: border-box;
 }
 
+html[data-theme-switching='true'] *,
+html[data-theme-switching='true'] *::before,
+html[data-theme-switching='true'] *::after {
+	transition: none !important;
+	animation: none !important;
+}
+
 html,
 body {
 	margin: 0;

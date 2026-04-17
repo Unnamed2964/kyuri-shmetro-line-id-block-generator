@@ -7,6 +7,10 @@ type FontLike = Parameters<typeof generateSVGWithPaths>[0]['font'];
 type ThemePreference = 'light' | 'dark' | 'system';
 
 const storageKey = 'site-theme';
+const themeSwitchingDataKey = 'themeSwitching';
+
+let clearThemeSwitchFrame = 0;
+let clearThemeSwitchFrameNested = 0;
 
 type StepSectionProps = {
 	accentClassName: string;
@@ -40,7 +44,34 @@ function getResolvedTheme(preference: ThemePreference) {
 	return preference;
 }
 
+function clearThemeSwitchingState() {
+	if (clearThemeSwitchFrame) {
+		window.cancelAnimationFrame(clearThemeSwitchFrame);
+		clearThemeSwitchFrame = 0;
+	}
+
+	if (clearThemeSwitchFrameNested) {
+		window.cancelAnimationFrame(clearThemeSwitchFrameNested);
+		clearThemeSwitchFrameNested = 0;
+	}
+
+	delete document.documentElement.dataset[themeSwitchingDataKey];
+}
+
+function beginThemeSwitchingState() {
+	clearThemeSwitchingState();
+	document.documentElement.dataset[themeSwitchingDataKey] = 'true';
+	clearThemeSwitchFrame = window.requestAnimationFrame(() => {
+		clearThemeSwitchFrame = 0;
+		clearThemeSwitchFrameNested = window.requestAnimationFrame(() => {
+			clearThemeSwitchFrameNested = 0;
+			delete document.documentElement.dataset[themeSwitchingDataKey];
+		});
+	});
+}
+
 function applyThemePreference(preference: ThemePreference) {
+	beginThemeSwitchingState();
 	const resolved = getResolvedTheme(preference);
 	document.documentElement.classList.toggle('dark', resolved === 'dark');
 	document.documentElement.dataset.themePreference = preference;
@@ -142,6 +173,7 @@ export function App() {
 
 		return () => {
 			mediaQuery.removeEventListener('change', handleThemeChange);
+			clearThemeSwitchingState();
 			if (fontBlobUrlRef.current) {
 				URL.revokeObjectURL(fontBlobUrlRef.current);
 			}
