@@ -117,9 +117,36 @@ Via a CDN or your locally bundled `dist/bundle.js` file, this library registers 
 </script>
 ```
 
-## Running the Webpage Locally
+## Local Development
 
-Just open `shmetro-line-id-block-generator.html` of the project in your browser (Ensure you have built the core distributions with `npm run build` beforehand).
+The repository now uses Vite for the interactive webpage while keeping the npm package entry points for library consumers.
+
+### Start the Web UI
+
+```bash
+npm install
+npm run dev
+```
+
+### Build Everything
+
+```bash
+npm run build
+```
+
+This command will:
+
+- build the npm package outputs into `dist/`
+- emit declaration files into `dist/`
+- build the webpage into `docs/` for GitHub Pages
+
+### Build Only the Package Outputs
+
+```bash
+npm run build:package
+```
+
+This keeps the library workflow suitable for publishing, while the webpage remains a Vite app.
 
 ## License
 

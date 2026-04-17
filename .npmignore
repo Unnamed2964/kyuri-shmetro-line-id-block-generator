@@ -2,6 +2,7 @@
 shmetro-line-id-block-generator.html
 test-script.js
 tsconfig.json
+tsconfig.build.json
 
 # 说明与图片文件
 example.png
@@ -10,3 +11,7 @@ reference/
 
 # 其他（可有可无，保持整洁）
 .gitignore
+docs/
+src/web/
+index.html
+vite.config.ts

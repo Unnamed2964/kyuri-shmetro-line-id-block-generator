@@ -117,9 +117,36 @@ console.log(embeddableGroup);
 </script>
 ```
 
-## 本地网页运行
+## 本地开发
 
-直接在浏览器中打开项目的 `shmetro-line-id-block-generator.html` （运行前需确认已通过 `npm run build` 构建了核心分发产物）。
+仓库现已改为使用 Vite 驱动网页演示，同时保留 npm 包的库入口与 UMD 构建产物。
+
+### 启动网页界面
+
+```bash
+npm install
+npm run dev
+```
+
+### 构建全部产物
+
+```bash
+npm run build
+```
+
+该命令会同时：
+
+- 构建 npm 包产物到 `dist/`
+- 生成类型声明到 `dist/`
+- 构建网页演示到 `docs/` 以供 GitHub Pages 使用
+
+### 仅构建 npm 包产物
+
+```bash
+npm run build:package
+```
+
+这样既保留了作为库发布时需要的构建流程，也把网页部分切换到了 Vite 项目结构。
 
 ## 许可证
 
