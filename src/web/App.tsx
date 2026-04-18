@@ -269,7 +269,8 @@ export function App() {
 					<p className="lead">一个用于生成上海地铁风格线路号方块 SVG 图形的工具。</p>
 					<div className="inline-links" aria-label="外部链接">
 						<a href="https://github.com/Unnamed2964/kyuri-shmetro-line-id-block-generator" target="_blank" rel="noreferrer">GitHub 仓库</a>
-						<a href="https://github.com/Unnamed2964" target="_blank" rel="noreferrer">作者主页</a>
+						<a href="https://github.com/Unnamed2964" target="_blank" rel="noreferrer">GitHub 主页</a>
+						<a href="https://umamichi.moe/" target="_blank" rel="noreferrer">作者博客</a>
 					</div>
 				</header>
 
