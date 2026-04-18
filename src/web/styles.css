@@ -217,7 +217,7 @@ code {
 }
 
 .step-marker {
-	font-family: var(--font-ui);
+	font-family: Arial, "Arial MT", "Helvetica Neue", Helvetica, sans-serif;
 	font-size: clamp(2.5rem, 5vw, 3.8rem);
 	font-weight: 700;
 	line-height: 1;
