@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import type { ChangeEvent, ReactNode } from 'react';
 import * as opentype from 'opentype.js';
 import { generateSVG, generateSVGWithPaths } from '../index';
+import { detectWindowsArial } from './arialSignature';
 
 type FontLike = Parameters<typeof generateSVGWithPaths>[0]['font'];
 type ThemePreference = 'light' | 'dark' | 'system';
@@ -157,6 +158,7 @@ export function App() {
 	useEffect(() => {
 		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 		const storedPreference = getStoredThemePreference();
+		let cancelled = false;
 		setResolvedTheme(applyThemePreference(storedPreference));
 
 		const handleThemeChange = () => {
@@ -167,11 +169,15 @@ export function App() {
 
 		mediaQuery.addEventListener('change', handleThemeChange);
 
-		void document.fonts.ready.then(() => {
-			setHasArialFont(document.fonts.check('12px Arial'));
-		});
+		void (async () => {
+			const detected = await detectWindowsArial();
+			if (!cancelled) {
+				setHasArialFont(detected);
+			}
+		})();
 
 		return () => {
+			cancelled = true;
 			mediaQuery.removeEventListener('change', handleThemeChange);
 			clearThemeSwitchingState();
 			if (fontBlobUrlRef.current) {
@@ -214,7 +220,6 @@ export function App() {
 			setFont(parsedFont);
 
 			await document.fonts.load('12px Arial');
-			setHasArialFont(document.fonts.check('12px Arial'));
 		} catch (error) {
 			setFont(null);
 			setFontLoadError(error instanceof Error ? `字体加载失败：${error.message}` : '字体加载失败。');
