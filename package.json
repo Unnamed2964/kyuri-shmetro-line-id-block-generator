@@ -55,6 +55,6 @@
   "homepage": "https://github.com/Unnamed2964/kyuri-shmetro-line-id-block-generator#readme",
   "types": "./dist/index.d.ts",
   "dependencies": {
-    "@umamichi-ui/common-css": "^0.1.1"
+    "@umamichi-ui/common-css": "^0.1.2"
   }
 }
