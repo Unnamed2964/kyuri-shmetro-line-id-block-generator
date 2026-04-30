@@ -8,7 +8,7 @@ type FontLike = Parameters<typeof generateSVGWithPaths>[0]['font'];
 type ThemePreference = 'light' | 'dark' | 'system';
 
 const storageKey = 'site-theme';
-const themeSwitchingDataKey = 'themeSwitching';
+const themeTransitionLockClass = 'theme-transition-lock';
 
 let clearThemeSwitchFrame = 0;
 let clearThemeSwitchFrameNested = 0;
@@ -56,17 +56,17 @@ function clearThemeSwitchingState() {
 		clearThemeSwitchFrameNested = 0;
 	}
 
-	delete document.documentElement.dataset[themeSwitchingDataKey];
+	document.documentElement.classList.remove(themeTransitionLockClass);
 }
 
 function beginThemeSwitchingState() {
 	clearThemeSwitchingState();
-	document.documentElement.dataset[themeSwitchingDataKey] = 'true';
+	document.documentElement.classList.add(themeTransitionLockClass);
 	clearThemeSwitchFrame = window.requestAnimationFrame(() => {
 		clearThemeSwitchFrame = 0;
 		clearThemeSwitchFrameNested = window.requestAnimationFrame(() => {
 			clearThemeSwitchFrameNested = 0;
-			delete document.documentElement.dataset[themeSwitchingDataKey];
+			document.documentElement.classList.remove(themeTransitionLockClass);
 		});
 	});
 }

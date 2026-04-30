@@ -39,9 +39,9 @@ html.dark {
 	color-scheme: dark;
 }
 
-html[data-theme-switching='true'] *,
-html[data-theme-switching='true'] *::before,
-html[data-theme-switching='true'] *::after {
+html.theme-transition-lock *,
+html.theme-transition-lock *::before,
+html.theme-transition-lock *::after {
 	transition: none !important;
 	animation: none !important;
 }
