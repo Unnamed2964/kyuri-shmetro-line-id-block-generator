@@ -1,6 +1,6 @@
 {
   "name": "@kyuri-metro/shmetro-line-id-block-generator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "一个在浏览器中运行的工具，用于生成上海地铁风格的线路号方块 SVG 图形。",
   "type": "module",
   "main": "./dist/index.cjs",
